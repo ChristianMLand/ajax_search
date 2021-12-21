@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="create" action="/users/create" method="POST">
+        <input type="text" name="username">
+        <button>Create</button>
+    </form>
+    <form id="filter">
+        <input type="text" name="partial">
+        <button>Filter</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody id="matches">
+            {% for user in all_users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.created_at}}</td>
+                <td>{{user.updated_at}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
+</body>
+</html>
